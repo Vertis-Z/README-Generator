@@ -1,0 +1,19 @@
+{
+  "name": "readme-generator",
+  "version": "1.0.0",
+  "description": "Automated Node.js README.md generator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vertis-Z/README-Generator.git"
+  },
+  "author": "Michael J Zelaya",
+  "license": "ISC",
+  "homepage": "https://github.com/Vertis-Z/README-Generator#readme",
+  "dependencies": {
+    "inquirer": "^6.3.1"
+  }
+}

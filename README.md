@@ -45,3 +45,8 @@ The instructions to generate the README are a custom module as well. I would lik
 
 Lastly, I used an async/await function to handle the promises and then finally generate the README which is written to the './output/' folder in the repo.
 ```
+
+
+## Demo Video
+https://user-images.githubusercontent.com/48894365/168934584-15677553-3719-45df-8754-ef8663190b23.mp4
+

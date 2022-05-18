@@ -1,20 +1,4 @@
-# 09 Node.js: Professional README Generator
-
-When creating an open source project on GitHub, it’s important to have a high-quality README for the app. This should include what the app is for, how to use the app, how to install it, how to report issues, and how to make contributions&mdash;this last part increases the likelihood that other developers will contribute to the success of the project. 
-
-You can quickly and easily generate a README file by using a command-line application to generate one. This allows the project creator to devote more time working on the project.
-
-Your task is to create a command-line application that dynamically generates a professional README.md file from a user's input using the [Inquirer package](https://www.npmjs.com/package/inquirer). Review the [Guide to a Professional README](https://github.com/coding-boot-camp/potential-enigma/blob/master/readme-guide.md) as a reminder of everything that a high-quality, professional README should contain. 
-
-The application will be invoked by using the following command:
-
-```
-node index.js
-```
-
-Because this application won’t be deployed, you’ll also need to provide a link to a walkthrough video that demonstrates its functionality. Revisit 2.2.4: Screencastify Tutorial in Module 2 of the **prework** as a refresher on how to record video from your computer. You’ll need to submit a link to the video **and** add it to the README of your project.
-
-Before you start, clone the [starter code](https://github.com/coding-boot-camp/potential-enigma).
+# README Generator
 
 ## User Story
 
@@ -44,25 +28,20 @@ WHEN I click on the links in the Table of Contents
 THEN I am taken to the corresponding section of the README
 ```
 
-## Getting Started
+### Node.js Functionality
 
-Here are some guidelines to help you get started:
+```
+The generator was written in Node.js utilizing mostly the Inquirer module for a large portion of its functionality. 
 
-* Create a `.gitignore` file and include `node_modules/` and `.DS_Store/` so that your `node_modules` directory isn't tracked or uploaded to GitHub. Be sure to create your `.gitignore` file before installing any npm dependencies.
+The app starts with the user being given a welcome message. This is an array of one inquirer confirm object. I wanted to present the user with a bit of a greeting before throwing them right into the meat of the app. Once the user is ready and hits 'y', I have a console log display a very small syntactical cheat sheet just in case the user wants to add some flair, links, or images as they generate the README. 
 
-* Make sure that your repo includes a `package.json` with the required dependencies. You can create one by running `npm init` when you first set up the project, before installing any dependencies.
+Next, the user is walked through a set of questions that requires their input. I utilized regex to use validate to make sure the use puts in a valid email. The sections title, table of contents, description, license, & questions are required. In the remaining sections, the user is given the choice if they would like to like to add each section. If they select yes the next question asks for them to input their data. If they choose no a confirm for the next section appears and the section they are not including does not appears in the table of contents. 
 
-* Include a video of the typical user flow through your application. This includes views of the prompts and the responses after their selection.
+Once the majority of the section selections are completed the user is presented with the license options. They can choose from eight of the most popular open-source licenses. After choosing a license a the respective license badge will be at the top of the README and a license section with text stating what license was chosen will be created. There is also a copyright added with a year. That year is brought in via `newDate()` to not have the date hardcoded for future use of the app. 
 
-* Include any other screenshots you deem necessary to help someone who has never been introduced to your application understand the purpose and function of it. This is how you will communicate to potential employers or other developers in the future what you built and why, and to show how it works.
+Lastly, the user is prompted with adding a credits section. This section was the most difficult because I wanted the user to be able to put in as many credits as they see fit. With that, I had to create a loop of some sort and I could not find the solution with Inquirer alone. I initially found an inquirer plug-in that allowed for the recursion I needed but much to my chagrin, the UI of the output was not polished. I then was able to find a chunk of code in that plug-ins issues section of its repo that, not only, did what I needed but looked correct. I decided to use that code (credits below) and create my own module to call on this functionality. Now the user can add as many or as few credits as they need. 
 
+The instructions to generate the README are a custom module as well. I would like to take credit for this but I cannot as that framework was set up in the assignment when given to me. I did, however, write all the necessary code to take in the user input data and add it to the `generateMarkdown()` function to create the file. 
 
-## Review
-
-You are required to submit the following for review:
-
-* A walkthrough video demonstrating the functionality of the application.
-
-* A sample README.md file for a project repository generated using your application.
-
-* The URL of the GitHub repository. Give the repository a unique name and include a README describing the project.
+Lastly, I used an async/await function to handle the promises and then finally generate the README which is written to the './output/' folder in the repo.
+```
